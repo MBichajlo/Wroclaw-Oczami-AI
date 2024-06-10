@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  @font-face {
+    font-family:"Spatha Serif";
+    src: url("../public/fonts/spathaserif.ttf") format("truetype");
+    font-style: normal;
+  }
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --china-rose: rgb(165, 99, 122);
+  --midnight-green: rgb(0, 56, 68);
+  --caribbean-current:rgb(0, 108, 103);
+  --selective-yellow:rgb(255, 177, 0);
+  --dutch-white:rgb(255, 235, 198);
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom right,  white, lightblue);
+  min-height: 100vh;
+} 
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.logo_text{
+  border-radius: 10px;
+  /* background-color: tan; */
+  
+ 
+  
+  width: 100%;
+  height: 100px;
+  font-family: "Spatha Serif";
+  font-size: 70px;
+  color: var(--china-rose);
+}
+
+.kamienice_photo{
+  position: fixed;
+  bottom: -25%;
+  width: 100%;
+}
+
+.dropdown_menu{
+  align-self: baseline;
+  
+  border-radius: 10px;
+  height: auto;
+  text-align: right;
+}
+.dropdown_menu:not(.active):hover{
+  color: var(--dutch-white);
+}
+.dropdown_menu.active{
+  /* background-color: var(--dutch-white); */
+  width: 250px;
+}
+
+
+.dropdown_menu ul{
+  position: relative;
+  /* margin: 5px; */
+  font-size: 30px;
+
+}
+.dropdown_menu li:hover{
+  background-color: var(--dutch-white);
+  border-radius: 10px;
+  padding: 0px 10px;
+}
+.create_card{
+  background-color: black;
+  border:1px solid black;
+
+  height: 100vh;
+  flex-grow: 1;
+  transition: all 0.5s ;
+  z-index: 1;
+  /* background-image: url("../public/images/jn77.png");
+  background-size: 100vh 130%;
+  background-position: 0 -50px;
+  background-repeat: no-repeat;*/
+  /* backdrop-filter: blur(30px);  */
+}
+
+.card_background{
+  position: absolute;
+  top: -150px;
+  z-index: -1;
+  background-color: black;
+  opacity: 0.7;
+  filter: blur(6px);
+}
+.create_card:hover{
+  flex-grow: 2;
+}
+
+.create_card:hover .card_background{
+  filter: blur(0);
+  transition: all 0.5s;
+  opacity: 1;
+}
