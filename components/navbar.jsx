@@ -2,6 +2,7 @@
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import Dropdown from "./dropdown";
 import { useState } from "react";
+import Link from "next/link";
 
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
@@ -14,7 +15,9 @@ const Navbar = () => {
     <div className='w-screen'>
       <div className='flex h-min items-center self-start justify-between gap-6 mt-10 px-20 py-0 border logo_text '>
         {/* <RemoveRedEyeOutlinedIcon fontSize='inherit' /> */}
-        <h1 className=''>Wrocław Oczami AI</h1>
+        <Link href={"/"}>
+          <h1 className=''>Wrocław Oczami AI</h1>
+        </Link>
         {/* <RemoveRedEyeOutlinedIcon
           fontSize='inherit'
           onClick={handleClick}
