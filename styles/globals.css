@@ -90,8 +90,8 @@ body {
 .create_card{
   background-color: black;
   border:1px solid black;
-
-  height: 100vh;
+  
+  height: 100%;
   flex-grow: 1;
   transition: all 0.5s ;
   z-index: 1;
@@ -103,12 +103,17 @@ body {
 }
 
 .card_background{
-  position: absolute;
-  top: -150px;
+  position:absolute;
+  object-fit:contain;
+  /* object-position: 10% 40%; */
+  /* top: -150px; */
   z-index: -1;
+  /* flex-grow: 1; */
   background-color: black;
   opacity: 0.7;
   filter: blur(6px);
+  
+  
 }
 .create_card:hover{
   flex-grow: 2;
@@ -118,4 +123,5 @@ body {
   filter: blur(0);
   transition: all 0.5s;
   opacity: 1;
+  /* flex-grow: 2; */
 }

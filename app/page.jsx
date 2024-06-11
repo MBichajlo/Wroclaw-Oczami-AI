@@ -5,7 +5,7 @@ import Navbar from "@/components/navbar.jsx";
 const Home = () => {
   return (
     <main className='flex-col justify-between items-center  flex min-h-screen'>
-      <Navbar />
+      {/* <Navbar /> */}
       <Image
         // src={"/images/kaamienice.png"}
         className='object-contain kamienice_photo'

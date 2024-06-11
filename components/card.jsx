@@ -1,16 +1,17 @@
 import Image from "next/image";
-import kamienica1 from "../public/images/jn77.png";
-import kamienica2 from "../public/images/nk29.png";
-import kamienica3 from "../public/images/nw10.png";
 
-const Card = () => {
+const Card = (props) => {
   return (
-    <div className='create_card text-center'>
+    <div className='create_card '>
       <Image
-        src={kamienica1}
+        src={props.image}
         className='card_background'
       />
-      AAA
+      <div className='flex flex-col justify-around items-center h-full'>
+        <h1>Stwórz </h1>
+        <button className='bg-orange-700 rounded p-2'>Losową kamienice</button>
+        <h2>sss</h2>
+      </div>
     </div>
   );
 };
