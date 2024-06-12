@@ -10,6 +10,10 @@ const Dropdown = () => {
       return !prev;
     });
   }
+
+  function closeDropdown() {
+    setDropdown(false);
+  }
   return (
     <div className={`p-0 pr-2 m-0 dropdown_menu ${dropdown ? "active" : ""}`}>
       <RemoveRedEyeOutlinedIcon
@@ -19,13 +23,28 @@ const Dropdown = () => {
       {dropdown ? (
         <ul className='p-0 m-0'>
           <li>
-            <Link href={"/about"}>O projekcie</Link>
+            <Link
+              href={"/about"}
+              onClick={closeDropdown}
+            >
+              O projekcie
+            </Link>
           </li>
           <li>
-            <Link href={"/data"}>Zbiór danych</Link>
+            <Link
+              href={"/data"}
+              onClick={closeDropdown}
+            >
+              Zbiór danych
+            </Link>
           </li>
           <li>
-            <Link href={"/create"}>Stwórz kamienice</Link>
+            <Link
+              href={"/create"}
+              onClick={closeDropdown}
+            >
+              Stwórz kamienice
+            </Link>
           </li>
         </ul>
       ) : null}

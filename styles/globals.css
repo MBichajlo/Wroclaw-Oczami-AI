@@ -66,6 +66,7 @@ body {
   border-radius: 10px;
   height: auto;
   text-align: right;
+  z-index: 10;
 }
 .dropdown_menu:not(.active):hover{
   color: var(--dutch-white);
@@ -87,41 +88,37 @@ body {
   border-radius: 10px;
   padding: 0px 10px;
 }
+
+
+
 .create_card{
-  background-color: black;
-  border:1px solid black;
-  
-  height: 100%;
-  flex-grow: 1;
-  transition: all 0.5s ;
+  height: 100vh;
+  position: relative;
   z-index: 1;
-  /* background-image: url("../public/images/jn77.png");
-  background-size: 100vh 130%;
-  background-position: 0 -50px;
-  background-repeat: no-repeat;*/
-  /* backdrop-filter: blur(30px);  */
+  /* width: 33vw; */
+  flex: 1;
+  border: 1px solid beige;
+  transition: all 0.5s;
+  background-color: black;
+  
+  
+}
+
+.create_card:hover{
+  flex: 2;
 }
 
 .card_background{
-  position:absolute;
-  object-fit:contain;
-  /* object-position: 10% 40%; */
-  /* top: -150px; */
+  position: relative;
   z-index: -1;
-  /* flex-grow: 1; */
-  background-color: black;
+  height: 100%;
+  width: 100%;
+  filter: blur(10px);
+  object-fit: cover;
   opacity: 0.7;
-  filter: blur(6px);
-  
-  
+  transition: all 0.5s;
 }
-.create_card:hover{
-  flex-grow: 2;
-}
-
 .create_card:hover .card_background{
   filter: blur(0);
-  transition: all 0.5s;
   opacity: 1;
-  /* flex-grow: 2; */
 }
