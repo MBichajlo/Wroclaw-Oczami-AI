@@ -20,14 +20,19 @@ const Card = (props) => {
     props.startLoading(true);
     const formData = new FormData();
     formData.append("file", file);
-    const results = await fetch("http://localhost:3000/api/segmentation", {
-      method: "POST",
-      body: formData,
-    });
-    const data = await results.json();
-    // props.startLoading(false);
-    props.setMasks(data.masks);
-    props.startLoading(false);
+
+    try {
+      const results = await fetch("http://localhost:3000/api/segmentation", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await results.json();
+      // props.startLoading(false);
+      props.setMasks(data.masks);
+      props.startLoading(false);
+    } catch (error) {
+      alert(error.data.error);
+    }
   }
 
   return (
