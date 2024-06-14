@@ -3,7 +3,12 @@ import axios from "axios";
 import image from "@data/nadodrze_jednosci_narodowej_52.jpeg";
 import { promises as fs } from "fs";
 import path from "path";
-export async function GET(request) {
+export async function POST(req, res) {
+  const formData = await req.formData();
+
+  const file = formData.get("file");
+  var fileBuffer = await file.arrayBuffer();
+
   var masks = [];
   var colors = {
     szum: 0,
@@ -26,19 +31,20 @@ export async function GET(request) {
     },
     body: "binaryData",
   };
-  const imgPath = path.join(
-    "/Users/maciejbichajlo/WebProjects/Wrocław Oczami AI/wroclaw-oczami-ai",
-    "data",
-    "nadodrze_jednosci_narodowej_52.jpeg"
-  );
-  const file = await fs.readFile(imgPath);
+  // const imgPath = path.join(
+  //   "/Users/maciejbichajlo/WebProjects/Wrocław Oczami AI/wroclaw-oczami-ai",
+  //   "data",
+  //   "nadodrze_jednosci_narodowej_52.jpeg"
+  // );
+  // const file = await fs.readFile(imgPath);
 
   try {
     const results = await axios.post(
       "https://api-inference.huggingface.co/models/Tenements-facades-project/segfacade_model",
-      file,
+      fileBuffer,
       config
     );
+    console.log(results.data);
     results.data.map((a) => {
       masks.push({
         label: a.label,
