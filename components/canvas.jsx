@@ -13,9 +13,9 @@ const Canvas = (props) => {
     var image = new Image();
     image.src = e.mask;
     image.onload = function () {
-      canvas.width = image.width;
-      canvas.height = image.height;
-      context.drawImage(image, 0, 0);
+      canvas.width = image.width * 0.5;
+      canvas.height = image.height * 0.5;
+      context.drawImage(image, 0, 0, canvas.width, canvas.height);
       const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
       const data = imageData.data;
       for (let i = 0; i < data.length; i += 4) {
@@ -27,7 +27,7 @@ const Canvas = (props) => {
           data[i + 3] = 0;
         }
       }
-      console.log(imageData);
+      // console.log(imageData);
       context.putImageData(imageData, 0, 0);
       context.save();
     };
@@ -43,7 +43,7 @@ const Canvas = (props) => {
   return (
     <canvas
       ref={canvasRef}
-      style={{ position: "absolute" }}
+      className='canvas_class'
     ></canvas>
   );
 };

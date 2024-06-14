@@ -10,6 +10,8 @@ const ModelSelect = (props) => {
             image={kamienica}
             text={""}
             setMasks={props.setMasks}
+            setImage={props.setImage}
+            startLoading={props.startLoading}
           />
         );
       })}

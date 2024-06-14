@@ -2,17 +2,36 @@
 import { useEffect, useState } from "react";
 import ModelSelect from "./modelSelect";
 import MaskShowcase from "./masksShowcase";
+import Image from "next/image";
+import { ClimbingBoxLoader } from "react-spinners";
 const CreateComponent = () => {
   const [masks, setMasks] = useState(null);
-  useEffect(() => {
-    console.log(masks);
-  }, [masks]);
+  const [imageToSegment, setImageToSegment] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  function eraseMasksAndImage() {
+    setImageToSegment(null);
+    setMasks(null);
+  }
   return (
     <div className=''>
       {masks ? (
-        <MaskShowcase masks={masks} />
+        <MaskShowcase
+          goBack={eraseMasksAndImage}
+          masks={masks}
+          image={imageToSegment}
+        />
+      ) : isLoading ? (
+        <ClimbingBoxLoader
+          color='#A5637A'
+          className='loader'
+          size={40}
+        />
       ) : (
-        <ModelSelect setMasks={setMasks} />
+        <ModelSelect
+          setMasks={setMasks}
+          setImage={setImageToSegment}
+          startLoading={setIsLoading}
+        />
       )}
     </div>
   );

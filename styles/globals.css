@@ -8,6 +8,11 @@
     src: url("../public/fonts/spathaserif.ttf") format("truetype");
     font-style: normal;
   }
+  @font-face {
+    font-family: "Spatha Sans";
+    src: url("../public/fonts/spathasans.ttf") format("truetype");
+    font-style: normal;
+  }
 }
 
 :root {
@@ -33,6 +38,7 @@ body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(to bottom right,  white, lightblue);
   min-height: 100vh;
+  font-family: "Spatha Sans";
 } 
 
 @layer utilities {
@@ -95,17 +101,21 @@ body {
   height: 100vh;
   position: relative;
   z-index: 1;
-  /* width: 33vw; */
+  width: 33vw;
   flex: 1;
   border: 1px solid beige;
   transition: all 0.5s;
   background-color: black;
-  
+  font-size: 20px;
+  color: var(--dutch-white);
+
   
 }
 
 .create_card:hover{
   flex: 2;
+  font-size: 35px;
+  color: var(--selective-yellow);
 }
 
 .card_background{
@@ -117,8 +127,52 @@ body {
   object-fit: cover;
   opacity: 0.7;
   transition: all 0.5s;
+  
 }
 .create_card:hover .card_background{
   filter: blur(0);
   opacity: 1;
+}
+
+
+.canvas_class{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.5;
+}
+
+.segmented_image{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+.mask_showcase{
+  padding: 10;
+  height:150vh;
+}
+
+
+.button{
+  padding: 10px;
+  background-color: var(--midnight-green);
+  border-radius: 5px;
+  color: var(--dutch-white);
+}
+.button:hover{
+  color: var(--caribbean-current);
+  background-color: var(--selective-yellow);
+}
+
+.loader{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
