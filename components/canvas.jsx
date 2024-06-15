@@ -1,18 +1,27 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-
+import React, { useEffect, useRef, useState } from "react";
+import NextImage from "next/image";
 const Canvas = (props) => {
+  const [maskImage, setMaskImage] = useState(null);
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
   const canvasRef = useRef(null);
   const utilCanvasRef = useRef(null);
   useEffect(() => {
+    //canvas
     const utilCanvas = utilCanvasRef.current;
     const utilContext = utilCanvas.getContext("2d");
     var sizeImage = new Image();
     sizeImage.src = props.elements[0].mask;
+
     sizeImage.onload = () => {
       utilCanvas.width = sizeImage.width * 0.5;
       utilCanvas.height = sizeImage.height * 0.5;
     };
+
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
     context.globalCompositeOperation = "destination-in";
@@ -47,6 +56,7 @@ const Canvas = (props) => {
         context.putImageData(imageData, 0, 0);
         utilContext.drawImage(canvas, 0, 0);
         // context.save();
+        saveAsImage();
       };
     });
   }, []);
@@ -54,22 +64,24 @@ const Canvas = (props) => {
   function saveAsImage() {
     const utilCanvas = utilCanvasRef.current;
     const utilContext = utilCanvas.getContext("2d");
-    const savedImage = utilCanvas.toDataURL("image/png");
-
-    console.log(savedImage);
+    const imageURL = utilCanvas.toDataURL("image/png");
+    // .replace("image/octet-stream");
+    setMaskImage(imageURL);
   }
 
   return (
     <div>
+      {maskImage && <NextImage src={maskImage} />}
       <canvas
         ref={canvasRef}
-        className='canvas_class'
+        // className='canvas_class'
         hidden
       ></canvas>
       <canvas
         ref={utilCanvasRef}
-        className='canvas_class'
+        // className='canvas_class'
         // hidden
+        hidden
       ></canvas>
     </div>
   );

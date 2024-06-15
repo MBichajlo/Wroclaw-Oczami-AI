@@ -31,6 +31,7 @@ const Card = (props) => {
       props.setMasks(data.masks);
       props.startLoading(false);
     } catch (error) {
+      props.startLoading(false);
       alert(error.data.error);
     }
   }

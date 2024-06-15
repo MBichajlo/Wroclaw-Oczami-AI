@@ -35,7 +35,9 @@ const MaskShowcase = (props) => {
             src={props.image}
             width={props.image.width * 0.5}
             height={props.image.height * 0.5}
-            style={{ position: "absolute", zIndex: "-1" }}
+            // objectFit='cover'
+
+            // style={{ position: "absolute", zIndex: "-1" }}
           />
         ) : (
           <h1>Loading</h1>
