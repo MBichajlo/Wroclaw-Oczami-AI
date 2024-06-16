@@ -7,6 +7,7 @@ import { ClimbingBoxLoader } from "react-spinners";
 const CreateComponent = () => {
   const [masks, setMasks] = useState(null);
   const [imageToSegment, setImageToSegment] = useState(null);
+  const [pix2pixImage, setPix2PixImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   function eraseMasksAndImage() {
     setImageToSegment(null);

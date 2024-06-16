@@ -15,7 +15,11 @@ const Dropdown = () => {
     setDropdown(false);
   }
   return (
-    <div className={`p-0 pr-2 m-0 dropdown_menu ${dropdown ? "active" : ""}`}>
+    <div
+      className={`sm:text-7xl text-6xl sm:self-baseline dropdown_menu ${
+        dropdown ? "active" : ""
+      }`}
+    >
       <RemoveRedEyeOutlinedIcon
         fontSize='inherit'
         onClick={handleClick}

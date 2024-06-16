@@ -6,9 +6,17 @@ let kamienice = [jn77, nk29, nw10];
 
 let cardsData = [
   {
-    kamienica: jn77,
+    kamienica: kamienice[0],
     name: "Segmentacja",
+  },
+  {
+    kamienica: nk29,
+    name: "Pix2Pix",
+  },
+  {
+    kamienica: nw10,
+    name: "Works in progress, sorry :cc",
   },
 ];
 
-export default kamienice;
+export default cardsData;

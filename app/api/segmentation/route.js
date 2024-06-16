@@ -8,7 +8,6 @@ export async function POST(req, res) {
 
   const file = formData.get("file");
   var fileBuffer = await file.arrayBuffer();
-
   var masks = [];
   var colors = {
     szum: 0,

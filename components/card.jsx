@@ -3,10 +3,13 @@ import NextImage from "next/image";
 import SouthIcon from "@mui/icons-material/South";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 
+import axios from "axios";
+
 const Card = (props) => {
   const [file, setFile] = useState(null);
   const inputRef = useRef(null);
   function handleChange(e) {
+    console.log(file);
     setFile(e.target.files[0]);
     const imageURL = URL.createObjectURL(e.target.files[0]);
     const image = new Image();
@@ -19,20 +22,42 @@ const Card = (props) => {
   async function sendToBackend() {
     props.startLoading(true);
     const formData = new FormData();
-    formData.append("file", file);
 
-    try {
-      const results = await fetch("http://localhost:3000/api/segmentation", {
-        method: "POST",
-        body: formData,
-      });
-      const data = await results.json();
-      // props.startLoading(false);
-      props.setMasks(data.masks);
+    if (props.text == "Segmentacja") {
+      formData.append("file", file);
+      try {
+        const results = await fetch("/api/segmentation", {
+          method: "POST",
+          body: formData,
+        });
+        const data = await results.json();
+        // props.startLoading(false);
+        props.setMasks(data.masks);
+        props.startLoading(false);
+      } catch (error) {
+        props.startLoading(false);
+        alert(error.data.error);
+      }
+    }
+
+    if (props.text == "Pix2Pix") {
+      props.startLoading(true);
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = async () => {
+        formData.append("data", reader.result);
+        try {
+          const results = await fetch("/api/pix2pix", {
+            method: "POST",
+            body: formData,
+          });
+          console.log(results);
+        } catch (er) {
+          console.log(er);
+        }
+      };
+
       props.startLoading(false);
-    } catch (error) {
-      props.startLoading(false);
-      alert(error.data.error);
     }
   }
 
@@ -48,7 +73,7 @@ const Card = (props) => {
         <h2>sss</h2>
       </div> */}
 
-      <h1>Segmentacja</h1>
+      <h1>{props.text}</h1>
       <h2>Obraz</h2>
       <SouthIcon />
       <h2>Model</h2>

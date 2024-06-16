@@ -4,7 +4,7 @@ import Navbar from "@/components/navbar.jsx";
 
 const Home = () => {
   return (
-    <main className='flex-col justify-between items-center  flex min-h-screen'>
+    <main className='flex-col justify-between items-center  flex sm:min-h-screen'>
       {/* <Navbar /> */}
       <Image
         // src={"/images/kaamienice.png"}
