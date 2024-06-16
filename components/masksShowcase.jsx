@@ -28,8 +28,11 @@ const MaskShowcase = (props) => {
           })
         : "Loading..."} */}
       <div>
-        <Canvas elements={props.masks}></Canvas>
-        {props.image ? (
+        <Canvas
+          elements={props.masks}
+          image={props.image}
+        ></Canvas>
+        {/* {props.image ? (
           <Image
             className='segmented_image'
             src={props.image}
@@ -41,7 +44,7 @@ const MaskShowcase = (props) => {
           />
         ) : (
           <h1>Loading</h1>
-        )}
+        )} */}
       </div>
     </div>
   );

@@ -142,14 +142,18 @@ body {
   margin-left: auto;
   margin-right: auto;
   opacity: 0.5;
+  
 }
 
+
 .segmented_image{
-  
+  position: absolute;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
+  z-index: -1 ;
+  
 }
 .mask_showcase{
   padding: 10;

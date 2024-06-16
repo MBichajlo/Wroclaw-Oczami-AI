@@ -18,8 +18,8 @@ const Canvas = (props) => {
     sizeImage.src = props.elements[0].mask;
 
     sizeImage.onload = () => {
-      utilCanvas.width = sizeImage.width * 0.5;
-      utilCanvas.height = sizeImage.height * 0.5;
+      utilCanvas.width = sizeImage.width;
+      utilCanvas.height = sizeImage.height;
     };
 
     const canvas = canvasRef.current;
@@ -32,8 +32,8 @@ const Canvas = (props) => {
       var image = new Image();
       image.src = e.mask;
       image.onload = function () {
-        canvas.width = image.width * 0.5;
-        canvas.height = image.height * 0.5;
+        canvas.width = image.width;
+        canvas.height = image.height;
 
         context.drawImage(image, 0, 0, canvas.width, canvas.height);
         const imageData = context.getImageData(
@@ -71,16 +71,26 @@ const Canvas = (props) => {
 
   return (
     <div>
-      {maskImage && <NextImage src={maskImage} />}
+      {maskImage && (
+        <NextImage
+          src={maskImage}
+          width={windowSize.width * 0.7}
+          height={windowSize.height * 0.7}
+          className='canvas_class'
+        />
+      )}
+      <NextImage
+        src={props.image}
+        width={windowSize.width * 0.7}
+        height={windowSize.height * 0.7}
+        className='segmented_image'
+      />
       <canvas
         ref={canvasRef}
-        // className='canvas_class'
         hidden
       ></canvas>
       <canvas
         ref={utilCanvasRef}
-        // className='canvas_class'
-        // hidden
         hidden
       ></canvas>
     </div>
