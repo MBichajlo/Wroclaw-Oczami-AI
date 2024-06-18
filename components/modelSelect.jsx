@@ -12,6 +12,8 @@ const ModelSelect = (props) => {
             setMasks={props.setMasks}
             setImage={props.setImage}
             startLoading={props.startLoading}
+            showcase={props.showcase}
+            setErrorAlert={props.setErrorAlert}
           />
         );
       })}

@@ -1,12 +1,15 @@
 "use client";
 import NextImage from "next/image";
 import SouthIcon from "@mui/icons-material/South";
+import { Alert } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 
 import axios from "axios";
 
 const Card = (props) => {
   const [file, setFile] = useState(null);
+  // const [errorAlert, setErrorAlert] = useState(null);
   const inputRef = useRef(null);
   function handleChange(e) {
     console.log(file);
@@ -30,13 +33,24 @@ const Card = (props) => {
           method: "POST",
           body: formData,
         });
-        const data = await results.json();
-        // props.startLoading(false);
-        props.setMasks(data.masks);
-        props.startLoading(false);
+        results.json().then((data) => {
+          console.log(data);
+          if (results.ok) {
+            props.setMasks(data.masks);
+          } else {
+            // console.log(data);
+            props.setErrorAlert(data.error);
+            // console.log(errorAlert);
+          }
+          props.startLoading(false);
+        });
+        // console.log(data);
+
+        // props.showcase(true);
       } catch (error) {
+        console.log("ERROR");
         props.startLoading(false);
-        alert(error.data.error);
+        props.setErrorAlert(error);
       }
     }
 
@@ -52,12 +66,15 @@ const Card = (props) => {
             body: formData,
           });
           console.log(results);
+
+          props.startLoading(false);
+          props.showcase(true);
         } catch (er) {
           console.log(er);
+          props.setErrorAlert(er.response.data);
+          props.startLoading(false);
         }
       };
-
-      props.startLoading(false);
     }
   }
 
@@ -74,12 +91,12 @@ const Card = (props) => {
       </div> */}
 
       <h1>{props.text}</h1>
-      <h2>Obraz</h2>
+      <h2>{props.text == "Segmentacja" ? "Obraz" : "Maska"}</h2>
       <SouthIcon />
       <h2>Model</h2>
 
       <SouthIcon />
-      <h2>Maska</h2>
+      <h2>{props.text == "Segmentacja" ? "Maska" : "Obraz"}</h2>
       <input
         ref={inputRef}
         type='file'
@@ -104,7 +121,9 @@ const Card = (props) => {
           className='button'
           onClick={sendToBackend}
         >
-          Wygeneruj Maski
+          {props.text == "Segmentacja"
+            ? "Wygeneruj maski"
+            : "Wygeneruj kamienice"}
         </button>
       )}
     </div>

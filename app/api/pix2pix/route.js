@@ -16,13 +16,14 @@ export async function POST(req) {
       "python3",
       ["pix2pix/run.py"].concat(["--image64", `"${trimmedImageData}"`])
     );
+    // console.log(xxx.stdout.toString());
   }
   try {
     await runModel();
     return NextResponse.json({ message: "good" }, { status: 200 });
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ message: error }, { status: 420 });
+    return NextResponse.json({ message: error.response.data }, { status: 500 });
   }
-  return NextResponse.json({ message: "error" }, { status: 420 });
+  return NextResponse.json({ message: "error" }, { status: 500 });
 }

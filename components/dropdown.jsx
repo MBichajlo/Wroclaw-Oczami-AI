@@ -25,13 +25,13 @@ const Dropdown = () => {
         onClick={handleClick}
       />
       {dropdown ? (
-        <ul className='p-0 m-0'>
+        <ul className='p-2 m-0'>
           <li>
             <Link
               href={"/about"}
               onClick={closeDropdown}
             >
-              O projekcie
+              <span>O projekcie</span>
             </Link>
           </li>
           <li>
@@ -39,7 +39,7 @@ const Dropdown = () => {
               href={"/data"}
               onClick={closeDropdown}
             >
-              Zbiór danych
+              <span>Zbiór danych</span>
             </Link>
           </li>
           <li>
@@ -47,7 +47,7 @@ const Dropdown = () => {
               href={"/create"}
               onClick={closeDropdown}
             >
-              Stwórz kamienice
+              <span>Stwórz kamienice</span>
             </Link>
           </li>
         </ul>

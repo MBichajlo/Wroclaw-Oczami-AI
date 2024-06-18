@@ -74,15 +74,15 @@ const Canvas = (props) => {
       {maskImage && (
         <NextImage
           src={maskImage}
-          width={windowSize.width * 0.7}
-          height={windowSize.height * 0.7}
+          width={windowSize.width * 0.3}
+          height={windowSize.height * 0.5}
           className='canvas_class'
         />
       )}
       <NextImage
         src={props.image}
-        width={windowSize.width * 0.7}
-        height={windowSize.height * 0.7}
+        width={windowSize.width * 0.3}
+        height={windowSize.height * 0.5}
         className='segmented_image'
       />
       <canvas
