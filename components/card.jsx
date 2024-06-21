@@ -119,8 +119,11 @@ const Card = (props) => {
             const input = inputRef.current;
             input.click();
           }}
+          disabled={props.text.name == "Pix2Pix"}
         >
           {file ? "Plik wczytany" : "Dodaj swój plik"}
+          <br />
+          {props.text.name == "Pix2Pix" && "Dostępne wkrótce"}
         </button>
       )}
       {file && (
