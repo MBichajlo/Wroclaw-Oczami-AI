@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+
 import NextImage from "next/image";
 const Canvas = (props) => {
   const [maskImage, setMaskImage] = useState(null);
@@ -7,20 +8,22 @@ const Canvas = (props) => {
     width: window.innerWidth,
     height: window.innerHeight,
   });
-
   const canvasRef = useRef(null);
   const utilCanvasRef = useRef(null);
+  const sizeImageRef = useRef(null);
   useEffect(() => {
     //canvas
     const utilCanvas = utilCanvasRef.current;
     const utilContext = utilCanvas.getContext("2d");
     var sizeImage = new Image();
     sizeImage.src = props.elements[0].mask;
-
     sizeImage.onload = () => {
       utilCanvas.width = sizeImage.width;
       utilCanvas.height = sizeImage.height;
+      console.log(utilCanvas.height);
     };
+
+    // console.log(sizeImage);
 
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
@@ -31,7 +34,7 @@ const Canvas = (props) => {
     props.elements.forEach((e) => {
       var image = new Image();
       image.src = e.mask;
-      image.onload = function () {
+      image.onload = () => {
         canvas.width = image.width;
         canvas.height = image.height;
 
@@ -65,6 +68,8 @@ const Canvas = (props) => {
     const utilCanvas = utilCanvasRef.current;
     const utilContext = utilCanvas.getContext("2d");
     const imageURL = utilCanvas.toDataURL("image/png");
+
+    console.log(imageURL);
     // .replace("image/octet-stream");
     setMaskImage(imageURL);
   }
@@ -101,6 +106,12 @@ const Canvas = (props) => {
         ref={utilCanvasRef}
         hidden
       ></canvas>
+      <img
+        src={props.elements[0].mask}
+        alt=''
+        ref={sizeImageRef}
+        hidden
+      />
     </div>
   );
 };

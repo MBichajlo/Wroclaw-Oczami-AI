@@ -49,7 +49,7 @@ export async function POST(req, res) {
       masks.push({
         label: a.label,
         color: colors[a.label],
-        mask: "data:image/svg+xml;base64," + a.mask,
+        mask: "data:image/png;base64," + a.mask,
       });
     });
     console.log(typeof masks);
