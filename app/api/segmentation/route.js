@@ -29,6 +29,7 @@ export async function POST(req, res) {
       "Content-Type": "image/jpeg",
     },
     body: "binaryData",
+    timeout: 10000,
   };
   // const imgPath = path.join(
   //   "/Users/maciejbichajlo/WebProjects/Wrocław Oczami AI/wroclaw-oczami-ai",
@@ -56,9 +57,16 @@ export async function POST(req, res) {
     return NextResponse.json({ masks: masks }, { status: 200 });
   } catch (error) {
     console.log(error);
-    return NextResponse.json(
-      { error: error.response.data.error },
-      { status: 500 }
-    );
+    if (error.code == "ECONNABORTED") {
+      return NextResponse.json(
+        { error: "Timeout: connecting to HuggingFace took too long" },
+        { status: 500 }
+      );
+    } else {
+      return NextResponse.json(
+        { error: error.response.data.error },
+        { status: 500 }
+      );
+    }
   }
 }
