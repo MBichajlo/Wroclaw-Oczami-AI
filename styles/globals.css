@@ -54,11 +54,13 @@ body {
  
   
   width: 100%;
-  height: 100px;
+  height: 200px;
   font-family: "Spatha Serif";
   /* font-size: 70px; */
   color: var(--china-rose);
 }
+
+
 
 .kamienice_photo{
   position: fixed;
@@ -70,24 +72,22 @@ body {
   
   
   border-radius: 10px;
-  height: auto;
+  /* height: ; */
   text-align: right;
   z-index: 10;
 }
 .dropdown_menu:not(.active):hover{
   color: var(--dutch-white);
 }
-.dropdown_menu.active{
-  /* background-color: var(--dutch-white); */
-  width: 250px;
-}
+
 .dropdown_menu li{
   padding: 5px;
 }
 
+
 .dropdown_menu ul{
   
-  position: relative;
+  /* position: relative; */
   /* margin: 5px; */
   font-size: 30px;
 
@@ -111,8 +111,6 @@ body {
   background-color: black;
   font-size: 20px;
   color: var(--dutch-white);
-
-  
 }
 
 .create_card:hover h1, .create_card:hover h2{
@@ -194,3 +192,63 @@ body {
   width: 50vh;
 }
 
+
+@media (max-width: 640px) {
+  .logo_text{
+    height: auto;
+  }
+  .dropdown_menu{
+    text-align: center;
+  }
+  .dropdown_menu ul{
+  
+    
+    /* margin: 5px; */
+    font-size: 30px;
+  
+  }
+  
+
+/* cards */
+
+  .create_card{
+    /* height: 33vh; */
+    position: relative;
+    z-index: 1;
+    width: 100vw;
+    
+    border: 1px solid beige;
+    transition: all 0.5s;
+    background-color: black;
+    font-size: 20px;
+    color: var(--dutch-white);
+  }
+  .create_card:not(.clicked) *:not(.card_background):not(h1){
+    display: none;
+  }
+
+  .create_card.clicked{
+    flex: 3;
+    font-size: 35px;
+    color: var(--selective-yellow);
+  }
+
+  .create_card.clicked .card_background{
+    filter: blur(0);
+    opacity: 1;
+  }
+
+  .create_card.clicked h1, .create_card.clicked h2{
+    background-color: var(--caribbean-current);
+    border-radius: 4px;
+    padding: 5px
+  }
+
+
+  /* button */
+
+  .button:active{
+    color: var(--caribbean-current);
+    background-color: var(--selective-yellow);
+  }
+}

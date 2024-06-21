@@ -6,9 +6,6 @@ const MaskShowcase = (props) => {
   return (
     <div className='mask_showcase text-center'>
       <div className='flex flex-row flex-1 text-2xl justify-evenly items-baseline m-6 w-2/4 ml-auto mr-auto'>
-        {props.masks ? (
-          <button className='button flex-1'>Zachowaj maskę jako zdjęcie</button>
-        ) : null}
         <h1 className='flex-1'>
           {props.masks ? "Wyniki segmentacji" : "Wyniki Pix2Pix"}
         </h1>

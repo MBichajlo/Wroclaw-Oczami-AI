@@ -85,6 +85,14 @@ const Canvas = (props) => {
         height={windowSize.height * 0.5}
         className='segmented_image'
       />
+
+      <a
+        href={maskImage}
+        className='button relative left-96'
+        download
+      >
+        Zachowaj maskę jako zdjęcie
+      </a>
       <canvas
         ref={canvasRef}
         hidden

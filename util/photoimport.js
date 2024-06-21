@@ -7,15 +7,24 @@ let kamienice = [jn77, nk29, nw10];
 let cardsData = [
   {
     kamienica: kamienice[0],
-    name: "Segmentacja",
+    name: "SegFormer",
+    firstText: "Obraz",
+    secondText: "Segmentacja",
+    thirdText: "Maska",
   },
   {
     kamienica: nk29,
     name: "Pix2Pix",
+    firstText: "Maska",
+    secondText: "Translacja",
+    thirdText: "Obraz",
   },
   {
     kamienica: nw10,
-    name: "Works in progress, sorry :cc",
+    name: "Grammars - to be deployed",
+    firstText: "Ilość pięter i wymiary",
+    secondText: "Maska",
+    // thirdText: "Obraz",
   },
 ];
 

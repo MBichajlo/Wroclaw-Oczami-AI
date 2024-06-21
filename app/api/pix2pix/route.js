@@ -16,7 +16,7 @@ export async function POST(req) {
       "python3",
       ["pix2pix/run.py"].concat(["--image64", `"${trimmedImageData}"`])
     );
-    // console.log(xxx.stdout.toString());
+    console.log(xxx.stderr.toString());
   }
   try {
     await runModel();

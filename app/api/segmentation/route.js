@@ -56,6 +56,9 @@ export async function POST(req, res) {
     return NextResponse.json({ masks: masks }, { status: 200 });
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ error: error.response.data }, { status: 500 });
+    return NextResponse.json(
+      { error: error.response.data.error },
+      { status: 500 }
+    );
   }
 }

@@ -11,6 +11,7 @@ const Card = (props) => {
   const [file, setFile] = useState(null);
   // const [errorAlert, setErrorAlert] = useState(null);
   const inputRef = useRef(null);
+  const [divClicked, setDivClicked] = useState(false);
   function handleChange(e) {
     console.log(file);
     setFile(e.target.files[0]);
@@ -79,7 +80,14 @@ const Card = (props) => {
   }
 
   return (
-    <div className='create_card flex flex-col justify-around items-center'>
+    <div
+      className={`create_card flex flex-col justify-around items-center ${
+        divClicked ? "clicked" : null
+      }`}
+      onClick={() => {
+        setDivClicked(!divClicked);
+      }}
+    >
       <NextImage
         src={props.image}
         className='card_background'
@@ -89,14 +97,12 @@ const Card = (props) => {
         <button className='bg-orange-700 rounded p-2'>Losową kamienice</button>
         <h2>sss</h2>
       </div> */}
-
-      <h1>{props.text}</h1>
-      <h2>{props.text == "Segmentacja" ? "Obraz" : "Maska"}</h2>
+      <h1>{props.text.name}</h1>
+      <h2>{props.text.firstText}</h2>
       <SouthIcon />
-      <h2>Model</h2>
-
-      <SouthIcon />
-      <h2>{props.text == "Segmentacja" ? "Maska" : "Obraz"}</h2>
+      <h2>{props.text.secondText}</h2>
+      {props.text.thirdText && <SouthIcon />}
+      {props.text.thirdText && <h2>{props.text.thirdText}</h2>}
       <input
         ref={inputRef}
         type='file'
@@ -106,16 +112,17 @@ const Card = (props) => {
         onChange={handleChange}
         hidden
       />
-      <button
-        className='button'
-        onClick={() => {
-          const input = inputRef.current;
-          input.click();
-        }}
-      >
-        {file ? "Plik wczytany" : "Dodaj swój plik"}
-      </button>
-
+      {props.text.thirdText && (
+        <button
+          className='button'
+          onClick={() => {
+            const input = inputRef.current;
+            input.click();
+          }}
+        >
+          {file ? "Plik wczytany" : "Dodaj swój plik"}
+        </button>
+      )}
       {file && (
         <button
           className='button'

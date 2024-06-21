@@ -1,3 +1,5 @@
+const { green } = require("@mui/material/colors");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,6 +9,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        yellow: "rgb(255, 177, 0)",
+        "midnight-green": "rgb(0, 56, 68)",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

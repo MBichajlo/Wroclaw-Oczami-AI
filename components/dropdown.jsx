@@ -16,7 +16,7 @@ const Dropdown = () => {
   }
   return (
     <div
-      className={`sm:text-7xl text-6xl sm:self-baseline dropdown_menu ${
+      className={`sm:text-7xl text-6xl  sm:self-baseline  dropdown_menu ${
         dropdown ? "active" : ""
       }`}
     >
@@ -28,10 +28,10 @@ const Dropdown = () => {
         <ul className='p-2 m-0'>
           <li>
             <Link
-              href={"/about"}
+              href={"/publications"}
               onClick={closeDropdown}
             >
-              <span>O projekcie</span>
+              <span>Publikacje</span>
             </Link>
           </li>
           <li>
@@ -48,6 +48,14 @@ const Dropdown = () => {
               onClick={closeDropdown}
             >
               <span>Stwórz kamienice</span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={"/authors"}
+              onClick={closeDropdown}
+            >
+              <span>O autorach</span>
             </Link>
           </li>
         </ul>
