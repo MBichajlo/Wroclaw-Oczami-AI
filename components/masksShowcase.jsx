@@ -1,7 +1,7 @@
 import React from "react";
 import Canvas from "./canvas";
 import Image from "next/image";
-import output from "@pix2pix/output.png";
+// import output from "@pix2pix/output.png";
 const MaskShowcase = (props) => {
   return (
     <div className='mask_showcase text-center'>
@@ -35,13 +35,13 @@ const MaskShowcase = (props) => {
             elements={props.masks}
             image={props.image}
           ></Canvas>
-        ) : (
-          <Image
-            src={output}
-            width={output.width * 2}
-            height={output.height * 2}
-          />
-        )}
+        ) : null
+        // <Image
+        //   src={null}
+        //   width={output.width * 2}
+        //   height={output.height * 2}
+        // />
+        }
         {/* {props.image ? (
           <Image
             className='segmented_image'
