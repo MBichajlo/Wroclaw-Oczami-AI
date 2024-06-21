@@ -27,13 +27,15 @@ const Card = (props) => {
     props.startLoading(true);
     const formData = new FormData();
 
-    if (props.text == "Segmentacja") {
+    if (props.text.name == "SegFormer") {
       formData.append("file", file);
+
       try {
         const results = await fetch("/api/segmentation", {
           method: "POST",
           body: formData,
         });
+
         results.json().then((data) => {
           console.log(data);
           if (results.ok) {
@@ -55,7 +57,7 @@ const Card = (props) => {
       }
     }
 
-    if (props.text == "Pix2Pix") {
+    if (props.text.name == "Pix2Pix") {
       props.startLoading(true);
       var reader = new FileReader();
       reader.readAsDataURL(file);
@@ -65,7 +67,9 @@ const Card = (props) => {
           const results = await fetch("/api/pix2pix", {
             method: "POST",
             body: formData,
+            signal: controller.signal,
           });
+          clearTimeout(timeoutID);
           console.log(results);
 
           props.startLoading(false);
